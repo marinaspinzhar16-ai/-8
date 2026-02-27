@@ -1,0 +1,22 @@
+def caching_fibonacci():
+    # Створюємо словник для збереження вже обчислених значень
+    cache = {}
+
+    def fibonacci(n):
+        # Базові випадки
+        if n <= 0:
+            return 0
+        if n == 1:
+            return 1
+
+        # Якщо значення вже є в кеші — повертаємо його
+        if n in cache:
+            return cache[n]
+
+        # Обчислюємо рекурсивно та зберігаємо в кеш
+        cache[n] = fibonacci(n - 1) + fibonacci(n - 2)
+
+        return cache[n]
+
+    # Повертаємо внутрішню функцію (замикання)
+    return fibonacci
